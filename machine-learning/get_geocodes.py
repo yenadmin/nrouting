@@ -16,7 +16,7 @@ LICENCE_KEY="zqefn3w1jkgvuzkv4pzmiyyt1nt23872"
 MAXIMUM_METERS  = 10000000 # Assuming our travel distance would never cross 1000 KMS
 EARTH_RADIUS = 6371000 # meaters
 ZERO = 0.0000001
-ROUTE_BY_GOOGLE = False 
+ROUTE_BY_GOOGLE = True 
 GOOGLE_MAPS_KEY = 'AIzaSyC5ltlEtUqZmGo6uC5gAl5EUgNnu5zjp5A'
 
 def radians(deg):

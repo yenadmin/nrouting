@@ -265,5 +265,11 @@ def test(HandlerClass = OptimalRoutingServer,
          ServerClass = BaseHTTPServer.HTTPServer):
     BaseHTTPServer.test(HandlerClass, ServerClass)
 
+def run(server_class=BaseHTTPServer.HTTPServer,
+        handler_class=OptimalRoutingServer):
+    server_address = ('', 9000)
+    httpd = server_class(server_address, handler_class)
+    httpd.serve_forever()
+
 if __name__ == '__main__':
-    test()
+    run()
