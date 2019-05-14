@@ -14,7 +14,7 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-PATH = '/Users/arulsmv/yen/nrouting/machine-learning/'
+PATH = '/home/yenadmin/git/nrouting/machine-learning/'
 CMD = 'generate_cluster.py --source_lat_lon %(origin)s --cluster_output_prefix /tmp/out --cluster_size %(cluster_size)s --num_routes %(routes)s --tsv_file %(cust_file)s'
 
 class OptimalRoutingServer(BaseHTTPServer.BaseHTTPRequestHandler):
@@ -168,8 +168,18 @@ class OptimalRoutingServer(BaseHTTPServer.BaseHTTPRequestHandler):
         f = StringIO()
         displaypath = cgi.escape(urllib.unquote(self.path))
         f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
-        f.write("<html>\n<title>Directory listing for %s</title>\n" % displaypath)
-        f.write("<body>\n<h2>Directory listing for %s</h2>\n" % displaypath)
+        f.write("<html>\n<title>ptimal routing</title>\n")
+        f.write("<body>\n<h2>Upload a file for finding optimal routing</h2>\n")
+        f.write("Upload a proper tab Separated files with following heading")
+        f.write("<table><tr><th>Cust ID</th><th>latitude</th><th>longitude</th><th>Customer Name</th><th>address</th></tr>")
+        f.write("<tr><td>1</td><td>13.011544</td><td>80.235501</td><td>yeN</td><td>CEGAIN, CPDE Building, Anna University, Guindy, Chennai - 25</td></tr></table>")
+        f.write("<BR><BR>Headers are case sensitive, lat lon is float type, Cust Id is integer.<br>") 
+        f.write("PS: we are in alpha testing, hence pleasse pass on parameters before uploading the file.<br>")
+        f.write("number of clusters (cluster_size parameter) for segregation. <BR> ")
+        f.write(" How many number of routes  (number of post man/salse man) with a parameter routes.<br>")
+        f.write("location (lat,lng)  from where the dispatch starts is origin parameter.<br>")
+
+        f.write("Example url is http://api.yen.net.in:9000/?cluster_size=3&routes=1&origin=13.055726,80.171927/")
         f.write("<hr>\n")
         f.write("<form ENCTYPE=\"multipart/form-data\" method=\"post\">")
         f.write("<input name=\"file\" type=\"file\"/>")

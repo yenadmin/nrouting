@@ -9,7 +9,7 @@ import json
 import marshal
 import time
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import group_clusters
 import get_geocodes
 import permutations
@@ -26,6 +26,7 @@ def location_clusters(geogroup, data_train):
     clusters[i] = pd.concat(grouped) 
   return clusters
 
+"""
 def plot_individual_clusters(clusters, source):
   fig, ax = plt.subplots()
   for key,geocluster in clusters.iteritems():
@@ -43,7 +44,7 @@ def plot_individual_clusters(clusters, source):
   df.plot(ax=ax, kind='scatter', y='latitude', x='longitude',
             c='m', marker='h', s=200)
   plt.show()
-
+"""
 
 def print_labels(labels):
   geogroup = {}

@@ -8,7 +8,6 @@ import csv
 import json
 import marshal
 import pandas as pd
-import matplotlib.pyplot as plt
 import get_geocodes
 import permutations
 
@@ -170,7 +169,6 @@ def find_minimal_path_for_route(all_stage_distance_pair, clusters, tsp, visit_or
             if len(cluster_source_nodes) == 1: d1 =0
             else: continue
           else:
-            print stage_id,  route_path[stage_id], source_index, exit_node_index
             d1 = tsp[route_path[stage_id]][source_index][exit_node_index]['distance']
           for entry_node_index in range(len(cluster_destination_nodes)):
             d2 = stage_distance_pair[exit_node_index][entry_node_index]
@@ -180,7 +178,6 @@ def find_minimal_path_for_route(all_stage_distance_pair, clusters, tsp, visit_or
                 else: continue
               else:
                 d3 = tsp[route_path[stage_id+1]][entry_node_index][destination_index]['distance']
-              print route_num, stage_id, source_index, exit_node_index, entry_node_index, destination_index, d0, d1, d2, d3
               if (d0 + d1 + d2 + d3 < distance_from_source[route_num][stage_id + 1][destination_index]['distance']):
                 node_details = { 'source_index' : source_index, 'exit_node_index' : exit_node_index, 'entry_node_index' : entry_node_index, 'destination_index' : destination_index }  
                 distance_from_source[route_num][stage_id + 1][destination_index] = {'distance' : d0 + d1 + d2 +d3, 'node_details' :node_details} 
